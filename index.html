@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Account</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // Assuming login form has id="loginForm"
+            $('#loginForm').submit(function(event){
+                event.preventDefault();
+                var username = $('#username').val(); // Assuming username field has id="username"
+                // Assuming the user is successfully logged in
+                $('#greeting').text('Hello ' + username).show();
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="greeting" style="display: none;"></div>
+    <form id="loginForm">
+        Username: <input type="text" id="username"><br>
+        Password: <input type="password" id="password"><br>
+        <input type="submit" value="Login">
+    </form>
+</body>
+</html>
+<!-- Assuming there's a form with id="registrationForm" and an input field with id="email" -->
+<script>
+    $(document).ready(function(){
+        $('#registrationForm').submit(function(event){
+            event.preventDefault();
+            var email = $('#email').val();
+            if(validateEmail(email)) {
+                // Proceed with form submission
+                this.submit();
+            } else {
+                // Show error message
+                $('#emailError').text('Please enter a valid email address').show();
+            }
+        });
+        
+        function validateEmail(email) {
+            // Basic email validation
+            var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return regex.test(email);
+        }
+    });
+</script>
